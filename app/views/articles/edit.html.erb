@@ -1,0 +1,16 @@
+<h2>Modification d'article</h2>
+
+<%= form_for :article, url: article_path, method: :put do |f| %>
+    <%= f.hidden_field :id %>
+
+    <%= f.label :title %>:
+    <%= f.text_field :title %><br />
+
+    <%= f.label :content %>:
+    <%= f.text_field :content %><br />
+
+    <%= f.label :user %>:
+    <%= f.collection_select :user_id, User.all, :id, :full_name, {:selected => current_user.id}, prompt: true %><br />
+
+    <%= f.submit %>
+<% end %>

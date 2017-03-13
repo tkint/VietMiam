@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'articles/index'
+  resources :articles
+
 
   devise_for :users, controllers: {
       sessions: 'users/sessions'
