@@ -1,0 +1,14 @@
+<div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+    <img src="..." alt="...">
+    <div class="caption">
+      <h3><%= link_to article.title, article_path(article) %></h3>
+      <h6><%= article.user.full_name %></h6>
+      <p><%= article.content %></p>
+      <p>
+        <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary' %>
+        <%= link_to 'Destroy', article_path(article), method: :delete, class: 'btn btn-primary' %>
+      </p>
+    </div>
+  </div>
+</div>

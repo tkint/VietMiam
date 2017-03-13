@@ -1,5 +1,10 @@
-<nav class="navbar navbar navbar-inverse">
-  <%= link_to "Viêt Miam", root_path, class: 'navbar-brand' %>
+<nav class="navbar">
+  <ul class="nav nav-pills navbar-right">
+    <%= render 'layouts/navigation_top_links' %>
+  </ul>
+</nav>
+<%= render 'layouts/brand' %>
+<nav class="navbar navbar-default">
   <ul class="nav navbar-nav">
     <%= render 'layouts/navigation_links' %>
   </ul>

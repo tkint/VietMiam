@@ -1,18 +1,7 @@
-<h1>Tous les articles</h1>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Author</th>
-    <th>Action</th>
-  </tr>
-  <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td><%= article.user.full_name %></td>
-        <td><%= link_to "Edit", edit_article_path(article) %> | <%= link_to "Delete", article_path(article), method: :delete %></td>
-      </tr>
-  <% end %>
-</table>
-<%= link_to "New", new_article_path %>
+<p id="notice"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<%= render partial: "articles/articles", locals: {pagination: true} %>
+
+<%= link_to 'New Article', new_article_path %>

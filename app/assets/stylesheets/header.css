@@ -1,0 +1,13 @@
+body {
+    width: 70%;
+}
+
+header {
+text-align: center;
+}
+
+header .icon {
+    width: 200px;
+    margin: auto;
+    display: block;
+}
