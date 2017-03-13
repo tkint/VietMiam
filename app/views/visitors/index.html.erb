@@ -1,3 +1,8 @@
+<h1>Users</h1>
+<% @users.each do |user| %>
+    <%= user.last_name %> <%= user.first_name %><br/><br/>
+<% end %>
+<h1>Articles</h1>
 <% @articles.each do |article| %>
     <%= article.title %><br/>
     <%= article.user %><br/><br/>
