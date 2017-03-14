@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :articles
-  resources :receipes
+  namespace :admin do
+    resources :articles, only: [:new, :edit, :create, :update, :destroy]
+    get :base
+  end
+
+  resources :articles, only: [:index, :show]
 
   devise_for :users, controllers: {
       sessions: 'users/sessions'
