@@ -1,24 +1,7 @@
 <h1>Editing Article</h1>
 
 <%= form_for @article, url: admin_article_path(@article), method: :put do |f| %>
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :content %>
-      <%= f.text_field :content %>
-    </div>
-
-    <div class="field">
-      <%= f.label :user_id %>
-      <%= f.text_field :user_id %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+    <%= render partial: 'form', locals: { f: f } %>
 <% end %>
 
 <%= link_to 'Show', @article %> |

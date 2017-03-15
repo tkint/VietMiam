@@ -1,24 +1,7 @@
 <h1>New Article</h1>
 
 <%= form_for @article, url: admin_articles_path, method: :post do |f| %>
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :content %>
-      <%= f.text_field :content %>
-    </div>
-
-    <div class="field">
-      <%= f.label :user_id %>
-      <%= f.text_field :user_id %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+    <%= render partial: 'form', locals: { f: f } %>
 <% end %>
 
 
