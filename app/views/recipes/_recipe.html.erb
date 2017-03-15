@@ -1,0 +1,13 @@
+<div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+    <img src="..." alt="...">
+    <div class="caption">
+      <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
+      <h6><%= recipe.user.full_name %></h6>
+      <p>
+        <%= link_to 'Edit', edit_admin_recipe_path(recipe), class: 'btn btn-primary' %>
+        <%= link_to 'Destroy', admin_recipe_path(recipe), method: :delete, class: 'btn btn-primary' %>
+      </p>
+    </div>
+  </div>
+</div>
