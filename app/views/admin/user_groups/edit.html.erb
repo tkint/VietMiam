@@ -1,0 +1,8 @@
+<h1>Editing User Group</h1>
+
+<%= form_for @user_group, url: admin_user_group_path(@user_group), method: :put do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+<% end %>
+
+<%= link_to 'Show', admin_user_group_path(@user_group) %> |
+<%= link_to 'Back', admin_user_groups_path %>
