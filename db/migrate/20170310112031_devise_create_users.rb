@@ -4,7 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       ## Custom fields
       t.string :first_name
       t.string :last_name
-      t.column :role, :integer, default: 0
+      t.references :user_group
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
