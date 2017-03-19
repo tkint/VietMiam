@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316210757) do
+ActiveRecord::Schema.define(version: 20170318045806) do
 
   create_table "article_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20170316210757) do
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
+  create_table "base_entities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "singular"
+    t.string   "plural"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plural"], name: "index_base_entities_on_plural", unique: true, using: :btree
+    t.index ["singular"], name: "index_base_entities_on_singular", unique: true, using: :btree
+  end
+
   create_table "recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "description", limit: 65535
@@ -40,11 +49,26 @@ ActiveRecord::Schema.define(version: 20170316210757) do
     t.index ["user_id"], name: "index_recipes_on_user_id", using: :btree
   end
 
+  create_table "rights", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_group_id"
+    t.integer  "base_entity_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.boolean  "right_create"
+    t.boolean  "right_read"
+    t.boolean  "right_update"
+    t.boolean  "right_delete"
+    t.index ["base_entity_id"], name: "index_rights_on_base_entity_id", using: :btree
+    t.index ["user_group_id", "base_entity_id"], name: "index_rights_on_user_group_id_and_base_entity_id", unique: true, using: :btree
+    t.index ["user_group_id"], name: "index_rights_on_user_group_id", using: :btree
+  end
+
   create_table "user_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_user_groups_on_name", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -72,4 +96,6 @@ ActiveRecord::Schema.define(version: 20170316210757) do
   add_foreign_key "article_comments", "users"
   add_foreign_key "articles", "users"
   add_foreign_key "recipes", "users"
+  add_foreign_key "rights", "base_entities"
+  add_foreign_key "rights", "user_groups"
 end

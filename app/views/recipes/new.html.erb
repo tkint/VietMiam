@@ -1,8 +1,10 @@
 <h1>New Recipe</h1>
 
-<%= form_for @recipe, url: admin_recipes_path, method: :post do |f| %>
+<%= form_for @recipe, url: recipes_path, method: :post do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
 <% end %>
 
 
+<% if has_rights?('recipe', 'index') %>
 <%= link_to 'Back', recipes_path %>
+<% end %>

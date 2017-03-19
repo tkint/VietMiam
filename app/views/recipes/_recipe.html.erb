@@ -5,8 +5,12 @@
       <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
       <h6><%= recipe.user.full_name %></h6>
       <p>
-        <%= link_to 'Edit', edit_admin_recipe_path(recipe), class: 'btn btn-primary' %>
-        <%= link_to 'Destroy', admin_recipe_path(recipe), method: :delete, class: 'btn btn-primary' %>
+        <% if has_rights?('recipe', 'edit') %>
+            <%= link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-primary' %>
+        <% end %>
+        <% if has_rights?('recipe', 'destroy') %>
+            <%= link_to 'Destroy', recipe_path(recipe), method: :delete, class: 'btn btn-primary' %>
+        <% end %>
       </p>
     </div>
   </div>

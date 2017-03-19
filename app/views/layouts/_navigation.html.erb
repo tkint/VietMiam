@@ -9,3 +9,27 @@
     <%= render 'layouts/navigation_links' %>
   </ul>
 </nav>
+
+<table class="table table-condensed table-hover">
+  <thead>
+  <tr>
+    <th class="text-center">Entity</th>
+    <th class="text-center">Create</th>
+    <th class="text-center">Read</th>
+    <th class="text-center">Update</th>
+    <th class="text-center">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% current_user.user_group.rights.each do |right| %>
+      <tr>
+        <td><%= right.base_entity.singular %></td>
+        <td><%= right.right_create %></td>
+        <td><%= right.right_read %></td>
+        <td><%= right.right_update %></td>
+        <td><%= right.right_delete %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

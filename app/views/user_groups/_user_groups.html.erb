@@ -8,21 +8,21 @@
             <li class="disabled"><span aria-hidden="true">&laquo;</span></li>
         <% else %>
             <li>
-              <%= link_to admin_user_groups_path(page: params[:page].to_i - 1) do %>
+              <%= link_to user_groups_path(page: params[:page].to_i - 1) do %>
                   <span aria-hidden="true">&laquo;</span>
               <% end %>
             </li>
         <% end %>
         <% for i in 0..@pages %>
             <li class="<%= params[:page].to_i == i ? 'active' : '' %>">
-              <%= link_to i + 1, admin_user_groups_path(page: i) %></a>
+              <%= link_to i + 1, user_groups_path(page: i) %></a>
             </li>
         <% end %>
         <% if params[:page].to_i == @pages %>
             <li class="disabled"><span aria-hidden="true">&raquo;</span></li>
         <% else %>
             <li>
-              <%= link_to admin_user_groups_path(page: params[:page].to_i + 1) do %>
+              <%= link_to user_groups_path(page: params[:page].to_i + 1) do %>
                   <span aria-hidden="true">&raquo;</span>
               <% end %>
             </li>

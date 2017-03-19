@@ -1,5 +1,4 @@
-class UserGroup < ApplicationRecord
-  has_many :users
+class BaseEntity < ApplicationRecord
   has_many :rights
   accepts_nested_attributes_for :rights
 end

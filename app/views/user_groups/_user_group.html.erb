@@ -1,0 +1,16 @@
+<div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+    <div class="caption">
+      <h3><%= link_to user_group.name, user_group_path(user_group) %></h3>
+      <h6><%= user_group.level %></h6>
+      <p>
+        <% if has_rights?('user_group', 'edit') %>
+            <%= link_to 'Edit', edit_user_group_path(user_group), class: 'btn btn-primary' %>
+        <% end %>
+        <% if has_rights?('user_group', 'destroy') %>
+            <%= link_to 'Destroy', user_group_path(user_group), method: :delete, class: 'btn btn-primary' %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

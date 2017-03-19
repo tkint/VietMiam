@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :user_group
+  has_many :articles
+  has_many :articles_comments, :class_name => 'Articles::Comment'
+  has_many :recipes
 
   def full_name
     first_name + ' ' + last_name

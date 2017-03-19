@@ -4,4 +4,6 @@
 
 <%= render partial: "articles/articles", locals: {pagination: true} %>
 
-<%= link_to "New", new_admin_article_path %>
+<% if has_rights?('article', 'new') %>
+    <%= link_to "New", new_article_path %>
+<% end %>

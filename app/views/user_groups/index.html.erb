@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User groups</h1>
+
+<%= render partial: 'user_groups', locals: {pagination: true} %>
+
+<% if has_rights?('user_group', 'new') %>
+    <%= link_to 'New', new_user_group_path %>
+<% end %>
