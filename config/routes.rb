@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :articles, only: [:new, :edit, :create, :update, :destroy]
-    resources :recipes, only: [:new, :edit, :create, :update, :destroy]
-    resources :users, only: [:new, :edit, :create, :update, :destroy]
-    resources :user_groups
+  scope '/', controller: :error_pages do
+    get 'error_404'
+    get 'unauthorized'
   end
 
-  resources :articles, only: [:index, :show]
-  resources :recipes, only: [:index, :show]
+  resources :articles
+  resources :comments, path: '/articles/comments'
+  resources :recipes
+  resources :user_groups
 
   devise_for :users, controllers: {
       sessions: 'users/sessions'
   }
-  resources :users, only: [:index, :show]
+
+  resources :users
 
   root to: 'visitors#index'
 end
