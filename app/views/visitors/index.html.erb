@@ -1,13 +1,11 @@
-<% if has_rights?('user', 'index') %>
-    <h1>Users</h1>
-    <% @users.each do |user| %>
-        <%= user.full_name %><br/>
-    <% end %>
-<% end %>
-
-
 <% if has_rights?('article', 'index') %>
     <h1>Articles</h1>
     <%= render partial: "articles/articles" %>
     <%= link_to "All", articles_path %>
+<% end %>
+
+<% if has_rights?('recipe', 'index') %>
+    <h1>Recipes</h1>
+    <%= render partial: "recipes/recipes" %>
+    <%= link_to "All", recipes_path %>
 <% end %>

@@ -6,8 +6,12 @@
       <h6><%= article.user.full_name %></h6>
       <p><%= article.content %></p>
       <p>
-        <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary' %>
-        <%= link_to 'Destroy', article_path(article), method: :delete, class: 'btn btn-primary' %>
+        <% if has_rights?('article', 'edit', article.id) %>
+            <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary' %>
+        <% end %>
+        <% if has_rights?('article', 'destroy', article.id) %>
+          <%= link_to 'Destroy', article_path(article), method: :delete, class: 'btn btn-primary' %>
+        <% end %>
       </p>
     </div>
   </div>

@@ -5,10 +5,10 @@
       <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
       <h6><%= recipe.user.full_name %></h6>
       <p>
-        <% if has_rights?('recipe', 'edit') %>
+        <% if has_rights?('recipe', 'edit', recipe.id) %>
             <%= link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-primary' %>
         <% end %>
-        <% if has_rights?('recipe', 'destroy') %>
+        <% if has_rights?('recipe', 'destroy', recipe.id) %>
             <%= link_to 'Destroy', recipe_path(recipe), method: :delete, class: 'btn btn-primary' %>
         <% end %>
       </p>

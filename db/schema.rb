@@ -52,12 +52,18 @@ ActiveRecord::Schema.define(version: 20170318045806) do
   create_table "rights", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_group_id"
     t.integer  "base_entity_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.boolean  "right_create"
     t.boolean  "right_read"
-    t.boolean  "right_update"
-    t.boolean  "right_delete"
+    t.boolean  "right_update_self"
+    t.boolean  "right_update_lesser_group"
+    t.boolean  "right_update_actual_group"
+    t.boolean  "right_update_upper_group"
+    t.boolean  "right_delete_self"
+    t.boolean  "right_delete_lesser_group"
+    t.boolean  "right_delete_actual_group"
+    t.boolean  "right_delete_upper_group"
     t.index ["base_entity_id"], name: "index_rights_on_base_entity_id", using: :btree
     t.index ["user_group_id", "base_entity_id"], name: "index_rights_on_user_group_id_and_base_entity_id", unique: true, using: :btree
     t.index ["user_group_id"], name: "index_rights_on_user_group_id", using: :btree

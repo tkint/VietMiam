@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :restrict
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def has_rights?(entity, action)
+  def has_rights?(entity, action, id = nil)
     if !current_user.nil?
       entity_query = BaseEntity.where(:singular => entity).or(BaseEntity.where(:plural => entity)).first
       if !entity_query.nil?
@@ -19,12 +19,8 @@ class ApplicationController < ActionController::Base
               return right.right_create
             when 'index', 'show'
               return right.right_read
-            when 'edit', 'update'
-              return right.right_update
-            when 'destroy'
-              return right.right_delete
             else
-              return true
+              return false
           end
         else
           return true
@@ -32,8 +28,6 @@ class ApplicationController < ActionController::Base
       else
         return true
       end
-    else
-      return false
     end
   end
 

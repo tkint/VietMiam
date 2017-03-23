@@ -8,14 +8,20 @@
   <%= f.number_field :level %>
 </div>
 
-<table class="table table-condensed table-hover">
+<table class="table table-condensed table-bordered table-hover">
   <thead>
   <tr>
     <th class="text-center">Entity</th>
     <th class="text-center">Create</th>
     <th class="text-center">Read</th>
-    <th class="text-center">Update</th>
-    <th class="text-center">Delete</th>
+    <th class="text-center">Update Self</th>
+    <th class="text-center">Update Lesser Group</th>
+    <th class="text-center">Update Actual Group</th>
+    <th class="text-center">Update Upper Group</th>
+    <th class="text-center">Delete Self</th>
+    <th class="text-center">Delete Lesser Group</th>
+    <th class="text-center">Delete Actual Group</th>
+    <th class="text-center">Delete Upper Group</th>
   </tr>
   </thead>
   <tbody>
@@ -24,8 +30,14 @@
         <td><%= right.object.base_entity.singular %></td>
         <td><%= right.check_box :right_create %></td>
         <td><%= right.check_box :right_read %></td>
-        <td><%= right.check_box :right_update %></td>
-        <td><%= right.check_box :right_delete %></td>
+        <td><%= right.check_box :right_update_self %></td>
+        <td><%= right.check_box :right_update_lesser_group %></td>
+        <td><%= right.check_box :right_update_actual_group %></td>
+        <td><%= right.check_box :right_update_upper_group %></td>
+        <td><%= right.check_box :right_delete_self %></td>
+        <td><%= right.check_box :right_delete_lesser_group %></td>
+        <td><%= right.check_box :right_delete_actual_group %></td>
+        <td><%= right.check_box :right_delete_upper_group %></td>
       </tr>
   <% end %>
   </tbody>
