@@ -1,7 +1,5 @@
 class UserGroupsController < ApplicationController
 
-  helper_method :has_rights?
-
   before_action :set_user_group, only: [:show, :edit, :update, :destroy]
 
   # GET /users

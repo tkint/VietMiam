@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  helper_method :has_rights?
-
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

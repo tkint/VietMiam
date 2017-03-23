@@ -19,8 +19,10 @@ class ApplicationController < ActionController::Base
               return right.right_create
             when 'index', 'show'
               return right.right_read
-            else
-              return false
+            when 'edit', 'update'
+              return (right.right_update_self and right.right_update_lesser_group and right.right_update_actual_group and right.right_update_upper_group)
+            when 'destroy'
+              return (right.right_delete_self and right.right_delete_lesser_group and right.right_delete_actual_group and right.right_delete_upper_group)
           end
         else
           return true
@@ -50,5 +52,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :email, :password])
     devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :email, :password, :current_password])
   end
-
 end
