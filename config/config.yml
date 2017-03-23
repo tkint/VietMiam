@@ -1,0 +1,8 @@
+development:
+  element_per_page: 10
+
+test:
+  element_per_page: 10
+
+production:
+  element_per_page: 10
